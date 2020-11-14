@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+	function show()
+	{
+		var name = document.getElementById("name").value;
+		var email = document.getElementById("email").value;
+		var message = document.getElementById("message").value;
+		var api = "https://ddr69swsp4.execute-api.us-east-2.amazonaws.com/Dev/assignment4"
+
+		var params = 
+		{
+			"name":name,
+			"email":email,
+			"message":message
+		};
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				alert(xhttp.responseText);
+			}
+		};
+		xhttp.open("POST", api, false);
+		var a = xhttp.send(JSON.stringify(params));
+		document.getElementById("name").value='';
+		document.getElementById("email").value='';
+		document.getElementById("message").value='';
+
+
+	}
+</script>
+	<title>assignment4</title>
+</head>
+<body>
+	<p>Give me Feedback, write ur email address and name!</p>
+	<form>
+		<input type="text" id="name" placeholder="name.">
+		<input type="text" id="email" placeholder="email">
+		<input type="text" id="message" placeholder="message">
+		<button type="button" onclick="show()">Submit</button>
+	</form>
+</body>
+
+
+</html>
